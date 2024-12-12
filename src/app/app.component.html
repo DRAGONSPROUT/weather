@@ -1,0 +1,54 @@
+<div class="main">
+<mat-card class="search">
+<div class="sd">
+    <h1>{{Greeting}}</h1>
+    <form (ngSubmit)="search()">
+        <input type ="text" class="searchin" placeholder="Search for a location" [(ngModel)]="loc" name="loc">
+        <button type="reset" href="#">X</button>   
+    </form>
+    </div>
+</mat-card>
+<br>
+<br>
+<br>
+<mat-card class="result"> 
+<div *ngIf="errorfound == true" class="resulte">
+    {{error}}
+</div>
+<div *ngIf="errorfound == false" class="resultd">
+    <div class="icon"><img src="http:{{data.current.condition.icon}}"></div>
+    <div class="condition">{{data.current.condition.text}}</div>
+    <div class="temp">{{data.current.temp_c}}<sup *ngIf="data">oc</sup></div>
+    <div class="feel">Feels like {{data.current.feelslike_c}}</div>
+    <br>
+    <div class="loc">{{data.location.name}},{{data.location.region}},{{data.location.country}}</div>
+    <br>
+    <div class="time">{{data.location.localtime}}</div>
+</div>
+<br>
+<mat-card class="extra">
+    <div class="edet">
+    <div class="inedet"><b *ngIf="data">Max Temp : </b> {{data.forecast.forecastday[0].day.maxtemp_c}}<sup *ngIf="data">oc</sup></div> 
+    <div class="inedet"><b *ngIf="data">Max Wind : </b> {{data.forecast.forecastday[0].day.maxwind_kph}}<span *ngIf="data"> kmph</span></div> 
+    <div class="inedet"><b *ngIf="data">Sunrise : </b> {{data.forecast.forecastday[0].astro.sunrise}}</div>
+    <div class="inedet"><b *ngIf="data">Pressure : </b> {{data.current.pressure_mb}}<span *ngIf="data"> mBar</span></div> 
+    
+    </div>
+    <br>
+    <div class="edet">
+        <div class="inedet"><b *ngIf="data">Min Temp : </b>{{data.forecast.forecastday[0].day.mintemp_c}}<sup *ngIf="data">oc</sup></div>
+        <div class="inedet"><b *ngIf="data">Precipitation : </b>{{data.forecast.forecastday[0].day.totalprecip_mm}}<span *ngIf="data">mm</span></div>
+        <div class="inedet"><b *ngIf="data">Sunset : </b>{{data.forecast.forecastday[0].astro.sunset}}</div>
+        <div class="inedet"><b *ngIf="data">Visibility : </b> {{data.current.vis_km}}<span *ngIf="data"> KM</span></div> 
+    </div>
+    <br>
+    <div class="edet">
+        <div class="inedet"><b *ngIf="data">Avg Temp : </b>{{data.forecast.forecastday[0].day.avgtemp_c}}<sup *ngIf="data">oc</sup></div>
+        <div class="inedet"><b *ngIf="data">Humidity : </b>{{data.forecast.forecastday[0].day.avghumidity}}<span *ngIf="data">%</span></div>
+        <div class="inedet"><b *ngIf="data">UV Index : </b>{{data.current.uv}}</div>
+        <div class="inedet"><b *ngIf="data">Dew Point : </b> {{data.current.dewpoint_c}}<sup *ngIf="data">oc</sup></div> 
+    </div>
+    
+</mat-card>
+</mat-card>
+</div>
