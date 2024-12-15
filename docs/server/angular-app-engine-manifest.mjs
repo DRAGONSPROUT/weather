@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/',
+  basePath: '/weather/',
   entryPoints: {
     '': () => import('./main.server.mjs')
   },
